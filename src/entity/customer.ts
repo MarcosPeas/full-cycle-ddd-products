@@ -1,7 +1,9 @@
-class Customer {
+import Address from "./address";
+
+export default class Customer {
     _id: string;
     _name: string;
-    _address: string = "";
+    _address?: Address;
     _active: boolean = false;
 
     constructor(id: string, name: string) {
@@ -25,7 +27,7 @@ class Customer {
     }
 
     activate(): void {
-        if (this._address.length === 0) {
+        if (this._address === undefined || this._address === null) {
             throw new Error("Address is mandatory to activate a customer");
         }
         this._active = true;
