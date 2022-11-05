@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "tslint": "^6.1.3",
+    "typescript": "^4.8.4"
+  },
+  "name": "exagonal-products",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcos Santos",
+  "license": "ISC",
+  "description": "Domain Driven Design"
+}
