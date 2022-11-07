@@ -23,11 +23,24 @@ export default class Product {
         }
     }
 
+    get id(): string {
+        return this._id;
+    }
+
+    get name(): string {
+        return this._name;
+    }
+
     get price(): number {
         return this._price;
     }
 
-    chagePrice(price: number): void {
+    changeName(name: string): void {
+        this._name = name;
+        this.validate();
+    }
+
+    changePrice(price: number): void {
         this._price = price;
         this.validate();
     }

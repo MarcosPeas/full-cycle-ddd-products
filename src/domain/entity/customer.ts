@@ -17,8 +17,12 @@ export default class Customer {
         return this._name;
     }
 
-    set address(value: Address) {
+    changeAddress(value: Address): void {
         this._address = value;
+    }
+
+    get address(): Address {
+        return this._address;
     }
 
     get isActive(): boolean {
