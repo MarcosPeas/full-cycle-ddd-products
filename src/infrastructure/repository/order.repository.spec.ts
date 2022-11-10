@@ -202,6 +202,13 @@ describe("Order repository test", () => {
     });
   });
 
+  it("should throw an error when order is not found", async () => {
+    const orderRepository = new OrderRepository();
+    expect(async () => {
+      await orderRepository.find("123");
+    }).rejects.toThrow("Order not found");
+  });
+
   it("should find all orders", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("123", "Customer 1");
