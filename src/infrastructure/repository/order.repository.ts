@@ -77,16 +77,25 @@ export default class OrderRepository implements OrderRepositoryInterface {
             throw new Error("Order not found");
         }
         const orderItems = orderModel.items.map(item => {
-            console.log(`price: ${item.price} -> quantity: ${item.quantity}`);
             return new OrderItem(item.id, item.name, item.price, item.product_id, item.quantity);
         });
         const order = new Order(id, orderModel.customer_id, orderItems);
-        console.log(`${order.total()} -> ${orderModel.total}`);
         return order;
     }
 
-    findAll(): Promise<Order[]> {
-        throw new Error("Method not implemented.");
+    async findAll(): Promise<Order[]> {
+        const orderModels = await OrderModel.findAll(
+            {
+                include: [{ model: OrderItemModel }],
+            }
+        );
+        const orders = orderModels.map(orderModel => {
+            const orderItems = orderModel.items.map(item => {
+                return new OrderItem(item.id, item.name, item.price, item.product_id, item.quantity);
+            });
+            return new Order(orderModel.id, orderModel.customer_id, orderItems);
+        });
+        return orders;
     }
 
 }
