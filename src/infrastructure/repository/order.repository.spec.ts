@@ -202,7 +202,7 @@ describe("Order repository test", () => {
     });
   });
 
-  it("should find all customers", async () => {
+  it("should find all orders", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("123", "Customer 1");
     const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
