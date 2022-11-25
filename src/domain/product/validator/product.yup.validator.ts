@@ -9,7 +9,7 @@ export default class ProductYupValidator implements ValidatorInterface<Product> 
             yup.object().shape({
                 id: yup.string().required("Id is required"),
                 name: yup.string().required("Name is required"),
-                price: yup.number().moreThan(0).required("Price must be greater than zero"),
+                price: yup.number().moreThan(0),
             }).validateSync({
                 id: entity.id,
                 name: entity.name,
@@ -22,7 +22,7 @@ export default class ProductYupValidator implements ValidatorInterface<Product> 
             e.errors.forEach(error => {
                 entity.notification.addError(
                     {
-                        context: "customer",
+                        context: "product",
                         message: error,
                     }
                 );

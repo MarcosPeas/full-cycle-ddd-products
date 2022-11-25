@@ -58,6 +58,6 @@ describe("Integration test create a produtc use case", () => {
         const usecase = new CreateProductUseCase(productRepository);
 
         input.price = 0;
-        await expect(usecase.execute(input)).rejects.toThrow("Price must be greater than zero");
+        await expect(usecase.execute(input)).rejects.toThrow("product: price must be greater than 0");
     });
 });
